@@ -1,7 +1,7 @@
 const res = require("express/lib/response");
 const api = require("../service/api");
 
-const getFilmesRecentes = async (req, res) => {
+const getFilmesPopulares = async (req, res) => {
     await api.get(`/movie/popular`).then((response) => {
         console.log(JSON.stringify(response.data));
         return res.json(response.data);    
@@ -18,6 +18,6 @@ const getDetalheFilme = async (req, res) => {
 }
 
 module.exports = {
-    getFilmesRecentes,
+    getFilmesPopulares,
     getDetalheFilme
 }
