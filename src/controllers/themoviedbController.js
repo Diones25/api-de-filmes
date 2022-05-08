@@ -29,9 +29,21 @@ const getDetalheFilme = async (req, res) => {
     });
 }
 
+const getSearchFilme = async (req, res) => {
+    const query = req.query["query"];
+
+    await api.get(`/search/movie?query=${query}`).then((response) => {
+        console.log(JSON.stringify(response.data));
+        return res.status(200).json(response.data);  
+    }).catch(() => {
+        return res.status(400).json({ message: "Filme não encontrado!" });
+    });
+}
+
 
 module.exports = {
     getFilmesPopulares,
     getDetalheFilme,
-    getDescobrirFilmes
+    getDescobrirFilmes,
+    getSearchFilme
 }
