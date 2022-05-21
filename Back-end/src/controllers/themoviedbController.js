@@ -1,4 +1,4 @@
-const api = require("../service/api.js");
+import api from "../service/api.js";
 
 const getFilmesPopulares = async (req, res) => {
     await api.get(`/movie/popular`).then((response) => {
@@ -41,7 +41,7 @@ const getSearchFilme = async (req, res) => {
 }
 
 
-module.exports = {
+export default {
     getFilmesPopulares,
     getDetalheFilme,
     getDescobrirFilmes,

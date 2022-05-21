@@ -1,7 +1,7 @@
-const express  = require('express');
-const cors  = require('cors');
-const router  = require('./router/router.js');
-const chalk  = require('chalk');
+import express  from 'express';
+import cors  from 'cors';
+import router  from './router/router.js';
+import chalk  from 'chalk';
 
 const app = express();
 const port = 4000;

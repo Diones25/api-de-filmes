@@ -1,4 +1,4 @@
-const axios = require("axios");
+import axios from "axios";
 
 const baseURL = "https://api.themoviedb.org/3";
 const api_key = "";
@@ -12,4 +12,4 @@ const api = axios.create({
     }
 });
 
-module.exports = api;
+export default api;
