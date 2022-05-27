@@ -9,17 +9,8 @@ const getFilmesPopulares = async (req, res) => {
     });
 }
 
-const getDescobrirFilmes = async (req, res) => {
-    await api.get('/discover/movie').then((response) => {
-        console.log(JSON.stringify(response.data))
-        return res.status(200).json(response.data);  
-    }).catch(() => {
-        return res.status(400).json({ message: "Filmes não encontrado!" });
-    });
-}
-
-const getDetalheFilme = async (req, res) => {
-    const movie_id = req.params.movieId;
+const getDetalheFilmeId = async (req, res) => {
+    const movie_id = req.params.movie_id;
 
     await api.get(`/movie/${movie_id}`).then((response) => {
         console.log(JSON.stringify(response.data));
@@ -40,10 +31,76 @@ const getSearchFilme = async (req, res) => {
     });
 }
 
+const getSeriesPopulares = async (req, res) => {
+    await api.get(`/tv/popular`).then((response) => {
+        console.log(JSON.stringify(response.data));
+        return res.status(200).json(response.data);  
+    }).catch(() => {
+        return res.status(400).json({ message: "Séries populares não encontrado!" });
+    });
+}
+
+const getSeriesPopularesId = async (req, res) => {
+    const tv_id = req.params.tv_id;
+
+    await api.get(`/tv/${tv_id}`).then((response) => {
+        console.log(JSON.stringify(response.data));
+        return res.status(200).json(response.data);  
+    }).catch(() => {
+        return res.status(400).json({ message: "Séries populares ID não encontrado!" });
+    });
+}
+
+const getSearchSeries = async (req, res) => {
+    const query = req.query["query"];
+
+    await api.get(`/search/tv?query=${query}`).then((response) => {
+        console.log(JSON.stringify(response.data));
+        return res.status(200).json(response.data);  
+    }).catch(() => {
+        return res.status(400).json({ message: "Serie não encontrado!" });
+    });
+}
+
+const getPessoasPopulares = async (req, res) => {
+    await api.get(`/person/popular`).then((response) => {
+        console.log(JSON.stringify(response.data));
+        return res.status(200).json(response.data);  
+    }).catch(() => {
+        return res.status(400).json({ message: "Pessoas populares não encontrado!" });
+    });
+}
+
+const getPessoasPopularesId = async (req, res) => {
+    const person_id = req.params.person_id;
+    
+    await api.get(`/person/${person_id}`).then((response) => {
+        console.log(JSON.stringify(response.data));
+        return res.status(200).json(response.data);  
+    }).catch(() => {
+        return res.status(400).json({ message: "Pessoas populares ID não encontrado!" });
+    });
+}
+
+const getSearchPessoas = async (req, res) => {
+    const query = req.query["query"];
+
+    await api.get(`/search/person?query=${query}`).then((response) => {
+        console.log(JSON.stringify(response.data));
+        return res.status(200).json(response.data);  
+    }).catch(() => {
+        return res.status(400).json({ message: "Pessoa não encontrado!" });
+    });
+}
 
 export default {
     getFilmesPopulares,
-    getDetalheFilme,
-    getDescobrirFilmes,
-    getSearchFilme
+    getDetalheFilmeId,
+    getSearchFilme,
+    getSeriesPopulares,
+    getSeriesPopularesId,
+    getSearchSeries,
+    getPessoasPopulares,
+    getPessoasPopularesId,
+    getSearchPessoas
 }
