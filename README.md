@@ -1,2 +1,2 @@
-![img](./src/assets/logothemoviedb.png)
+![img](Back-end/src/assets/logothemoviedb.png)
 ## API de consulta de filmes themoviedb
