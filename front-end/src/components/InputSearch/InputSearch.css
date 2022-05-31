@@ -1,0 +1,15 @@
+#Input {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding: 0 20px 0 20px;
+    height: 54px;
+}
+
+#button {
+    background-color: #1AD0B1;
+    border-radius: 20px;
+    position: relative;
+    left: -15px;
+    border: 0;
+    z-index: 999;
+}
