@@ -1,6 +1,10 @@
 #card {
-
+    width: 240px;
+    height: 480px;
     border-radius: 15px;
+}
+#cardImg {
+    height: 354px;
 }
 #cardBody {
     padding-top: 30px;

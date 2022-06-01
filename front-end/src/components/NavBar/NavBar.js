@@ -3,6 +3,7 @@ import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min";
 import logo from "../../assets/img/logo.png";
+import './Navbar.css';
 
 const NavBar = () => {
   return (
@@ -15,47 +16,95 @@ const NavBar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <NavDropdown className="text-white" title="Filmes" id="">
-                <NavDropdown.Item href="#action/3.1">
-                  Populares
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Em cartaz
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Próximas estréias
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Mais bem avaliados
-                </NavDropdown.Item>
-              </NavDropdown>
-              <NavDropdown title="Séries" id="">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
-              <NavDropdown title="Pessoas" id="">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
-                  Something
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
+              <li class="nav-item dropdown">
+                <p
+                  className="nav-link text-white"
+                  id="filmes"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style={{ fontWeight: "bold", fontSize: "1.1em" }}
+                >
+                  Filmes
+                </p>
+                <ul className="dropdown-menu" aria-labelledby="filmes">
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Populares
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Em cartaz
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Próximas estréias
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Mais bem avaliados
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <p
+                  className="nav-link text-white mx-3"
+                  id="series"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style={{ fontWeight: "bold", fontSize: "1.1em" }}
+                >
+                  Séries
+                </p>
+                <ul className="dropdown-menu" aria-labelledby="series">
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Populares
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Em exibição hoje
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Na tv
+                    </a>
+                  </li>
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Mais bem avaliados
+                    </a>
+                  </li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <p
+                  className="nav-link text-white"
+                  id="pessoas"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style={{ fontWeight: "bold", fontSize: "1.1em" }}
+                >
+                  Pessoas
+                </p>
+                <ul className="dropdown-menu" aria-labelledby="pessoas">
+                  <li>
+                    <a className="dropdown-item" href="#">
+                      Populares
+                    </a>
+                  </li>
+                </ul>
+              </li>
             </Nav>
           </Navbar.Collapse>
         </Container>
