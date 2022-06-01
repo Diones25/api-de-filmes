@@ -4,6 +4,9 @@ import themoviedbController from '../controllers/themoviedbController.js';
 const router = Router();
 
 router.get('/filmes/populares', themoviedbController.getFilmesPopulares);
+router.get('/filmes/cartaz', themoviedbController.getFilmesEmCartaz);
+router.get('/filmes/proximas/estreias', themoviedbController.getFilmesProximasEstreias);
+router.get('/filmes/avaliados', themoviedbController.getFilmesBemAvaliados);
 router.get('/filme/populares/:movie_id', themoviedbController.getDetalheFilmeId);
 router.get('/search/movie', themoviedbController.getSearchFilme);
 router.get('/series/populares', themoviedbController.getSeriesPopulares);

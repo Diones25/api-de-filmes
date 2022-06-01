@@ -9,6 +9,33 @@ const getFilmesPopulares = async (req, res) => {
     });
 }
 
+const getFilmesEmCartaz = async (req, res) => {
+    await api.get(`/movie/now_playing`).then((response) => {
+        console.log(JSON.stringify(response.data));
+        return res.status(200).json(response.data);  
+    }).catch(() => {
+        return res.status(400).json({ message: "Filmes em cartaz não encontrado!" });
+    });
+}
+
+const getFilmesProximasEstreias = async (req, res) => {
+    await api.get(`/movie/upcoming`).then((response) => {
+        console.log(JSON.stringify(response.data));
+        return res.status(200).json(response.data);  
+    }).catch(() => {
+        return res.status(400).json({ message: "Próximas estréias não encontrado!" });
+    });
+}
+
+const getFilmesBemAvaliados = async (req, res) => {
+    await api.get(`/movie/top_rated`).then((response) => {
+        console.log(JSON.stringify(response.data));
+        return res.status(200).json(response.data);  
+    }).catch(() => {
+        return res.status(400).json({ message: "Próximas estréias não encontrado!" });
+    });
+}
+
 const getDetalheFilmeId = async (req, res) => {
     const movie_id = req.params.movie_id;
 
@@ -95,6 +122,9 @@ const getSearchPessoas = async (req, res) => {
 
 export default {
     getFilmesPopulares,
+    getFilmesEmCartaz,
+    getFilmesProximasEstreias,
+    getFilmesBemAvaliados,
     getDetalheFilmeId,
     getSearchFilme,
     getSeriesPopulares,
