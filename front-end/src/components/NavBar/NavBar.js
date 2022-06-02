@@ -16,7 +16,7 @@ const NavBar = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
-              <li class="nav-item dropdown">
+              <li className="nav-item dropdown">
                 <p
                   className="nav-link text-white"
                   id="filmes"
@@ -51,7 +51,7 @@ const NavBar = () => {
                 </ul>
               </li>
 
-              <li class="nav-item dropdown">
+              <li className="nav-item dropdown">
                 <p
                   className="nav-link text-white mx-3"
                   id="series"
@@ -86,7 +86,7 @@ const NavBar = () => {
                 </ul>
               </li>
 
-              <li class="nav-item dropdown">
+              <li className="nav-item dropdown">
                 <p
                   className="nav-link text-white"
                   id="pessoas"
