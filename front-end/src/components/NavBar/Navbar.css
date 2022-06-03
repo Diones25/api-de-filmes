@@ -2,6 +2,8 @@
     color: #fff;
 }
 
-#NavDropdown .dropdown-toggle {
-    
+#logo {
+    height: 20px;
+    position: relative;
+    top: 5px;
 }

@@ -11,13 +11,13 @@ const NavBar = () => {
       <Navbar className="bg text-white" expand="lg">
         <Container>
           <Navbar.Brand href="#home">
-            <img alt="" src={logo} className="d-inline-block align-top" />{" "}
+            <img alt="logo" id="logo" src={logo} className="d-inline-block align-top" />{" "}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <li className="nav-item dropdown">
-                <p
+                <span
                   className="nav-link text-white"
                   id="filmes"
                   role="button"
@@ -26,7 +26,7 @@ const NavBar = () => {
                   style={{ fontWeight: "bold", fontSize: "1.1em" }}
                 >
                   Filmes
-                </p>
+                </span>
                 <ul className="dropdown-menu" aria-labelledby="filmes">
                   <li>
                     <a className="dropdown-item" href="#">
@@ -52,7 +52,7 @@ const NavBar = () => {
               </li>
 
               <li className="nav-item dropdown">
-                <p
+                <span
                   className="nav-link text-white mx-3"
                   id="series"
                   role="button"
@@ -61,7 +61,7 @@ const NavBar = () => {
                   style={{ fontWeight: "bold", fontSize: "1.1em" }}
                 >
                   Séries
-                </p>
+                </span>
                 <ul className="dropdown-menu" aria-labelledby="series">
                   <li>
                     <a className="dropdown-item" href="#">
@@ -87,7 +87,7 @@ const NavBar = () => {
               </li>
 
               <li className="nav-item dropdown">
-                <p
+                <span
                   className="nav-link text-white"
                   id="pessoas"
                   role="button"
@@ -96,7 +96,7 @@ const NavBar = () => {
                   style={{ fontWeight: "bold", fontSize: "1.1em" }}
                 >
                   Pessoas
-                </p>
+                </span>
                 <ul className="dropdown-menu" aria-labelledby="pessoas">
                   <li>
                     <a className="dropdown-item" href="#">

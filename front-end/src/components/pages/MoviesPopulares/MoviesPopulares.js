@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import moment from 'moment';
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import { Container, Row, Col, Card } from "react-bootstrap";
