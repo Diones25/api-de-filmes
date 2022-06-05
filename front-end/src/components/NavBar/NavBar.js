@@ -9,7 +9,7 @@ const NavBar = () => {
   return (
     <>
       <Navbar className="bg text-white" expand="lg">
-        <Container>
+        <Container fluid>
           <Navbar.Brand href="#home">
             <img alt="logo" id="logo" src={logo} className="d-inline-block align-top" />{" "}
           </Navbar.Brand>

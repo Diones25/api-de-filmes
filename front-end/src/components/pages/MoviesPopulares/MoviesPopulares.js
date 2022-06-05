@@ -7,6 +7,7 @@ import api from "../../../service/api.js";
 
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min";
+import Banner from '../../Banner/Banner.js';
 
 import "./MoviesPopulares.css";
 
@@ -31,6 +32,7 @@ const MoviesPopulares = () => {
   return (
     //title, release_date, vote_average, poster_path
     <>
+      <Banner />
       <div className="bgContainer" style={{ background: "#F5F5F5" }}>
         <Container className="pt-5">
           <Row className="d-flex justify-content-center">
