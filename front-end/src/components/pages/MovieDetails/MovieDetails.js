@@ -8,7 +8,7 @@ import poster from '../../../assets/img/poster.jpg'
 const MovieDetails = () => {
   return (
     <>
-      <div style={{ backgroundImage:`url(${poster})`, backgroundRepeat: "no-repeat", backgroundSize: "100% 100%", zIndex: "-1" }} >
+      <div style={{ backgroundImage:`url(${poster})`, backgroundRepeat: "no-repeat", backgroundSize: "100% 100%" }} >
         <div id="DetailsContainer" className="d-flex align-items-center my-5">        
           <Container fluid>
             <Row>
