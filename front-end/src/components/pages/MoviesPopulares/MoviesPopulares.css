@@ -3,6 +3,11 @@
     height: 395px;
     border-radius: 10px;
 }
+#card:hover {
+    -webkit-box-shadow: 5px 5px 15px 5px #BDC3C7; 
+    box-shadow: 5px 5px 15px 5px #BDC3C7;
+    transition: all 0.3s;
+}
 
 #cardImg {
     height: 255px;
