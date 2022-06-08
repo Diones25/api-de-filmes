@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { format } from 'date-fns'
-import { ptBR } from 'date-fns/locale'
 import { Container, Row, Col, Card } from "react-bootstrap";
 import api from "../../../service/api.js";
 
@@ -20,8 +18,8 @@ const MoviesPopulares = () => {
     api
       .get("/filmes/populares")
       .then((response) => {
-        console.log(response.data.results);
-        setMoviePopulares(response.data.results);
+        console.log(response.data);
+        setMoviePopulares(response.data);
         //setLoading(false);
       })
       .catch((err) => {
@@ -68,11 +66,7 @@ const MoviesPopulares = () => {
                       </div>
                       <Card.Title className="title">{item.title}</Card.Title>
                       <Card.Text className="date">
-                        {format(
-                          new Date(item.release_date),
-                          `${`d`}${" MMMM  YYY"}`,
-                          { locale: ptBR }
-                        )}
+                        {item.release_date}
                       </Card.Text>
                     </Card.Body>
                   </Card>
