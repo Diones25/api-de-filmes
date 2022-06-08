@@ -7,14 +7,22 @@ const getFilmesPopulares = async (req, res) => {
       let dados = response.data.results;
 
       let retornoEsperado = dados.map((dado) => {
+        let data = dado.release_date;
+
+        data = new Date(data);
+        var date = data.getDate() + 1;
+        var month = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"][data.getMonth()];
+        var year = data.getFullYear();
+
         return {
           id: dado.id,
           poster_path: dado.poster_path,
           vote_average: dado.vote_average,
           title: dado.title,
-          release_date: dado.release_date,
+          release_date: `${date} de ${month} de ${year}`,
         };
       });
+      
       console.log(retornoEsperado);
       return res.status(200).json(retornoEsperado);
     })
