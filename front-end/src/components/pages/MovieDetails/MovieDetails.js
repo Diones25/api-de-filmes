@@ -1,4 +1,5 @@
 import { Container, Row, Col, Card } from "react-bootstrap";
+import  Carousel from 'react-grid-carousel'
 
 import "./MovieDetails.css";
 
@@ -8,8 +9,15 @@ import poster from '../../../assets/img/poster.jpg'
 const MovieDetails = () => {
   return (
     <>
-      <div style={{ backgroundImage:`url(${poster})`, backgroundRepeat: "no-repeat", backgroundSize: "100% 100%", position: "relative" }} >
-        <div id="DetailsContainer" className="my-5">        
+      <div
+        style={{
+          backgroundImage: `url(${poster})`,
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "100% 100%",
+          position: "relative",
+        }}
+      >
+        <div id="DetailsContainer" className="my-5">
           <Container fluid>
             <Row>
               <Col md={12}>
@@ -43,12 +51,8 @@ const MovieDetails = () => {
                         <ul>
                           <li className="d-flex">
                             <div className="rating">
-                              <div
-                                className={`progress-circle over50 p60`}
-                              >
-                                <span className="number">
-                                  60
-                                </span>
+                              <div className={`progress-circle over50 p60`}>
+                                <span className="number">60</span>
                                 <span className="percent">%</span>
                                 <div className="left-half-clipper">
                                   <div className="first50-bar"></div>
@@ -73,8 +77,8 @@ const MovieDetails = () => {
                       <h3>Sinopse</h3>
                       <div class="tagline">
                         <p>
-                          Peter Parker é desmascarado e não consegue mais separar
-                          sua vida normal dos grandes riscos de ser um
+                          Peter Parker é desmascarado e não consegue mais
+                          separar sua vida normal dos grandes riscos de ser um
                           super-herói. Quando ele pede ajuda ao Doutor Estranho,
                           os riscos se tornam ainda mais perigosos, e o forçam a
                           descobrir o que realmente significa ser o
@@ -136,6 +140,229 @@ const MovieDetails = () => {
           </Container>
         </div>
       </div>
+
+      <Container className="mb-5">
+        <h3>Elenco principal</h3>
+        <Row>
+          <Col lg={8} className="bg-danger">
+            <Carousel cols={6} rows={1} gap={10} loop>
+
+              <Carousel.Item className="my-3">
+                <Card style={{ width: "140px" }}>
+                  <Card.Img
+                    style={{ height: '160px' }}
+                    variant="top"
+                    src="https://picsum.photos/800/600?random=2"
+                  />
+                  <Card.Body style={{ height: '97px' }}>
+                    <Card.Title>Tom Holland</Card.Title>
+                    <Card.Text>
+                      Peter Parker / Spider-Man
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Carousel.Item>
+
+              <Carousel.Item className="my-3">
+                <Card style={{ width: "140px" }}>
+                  <Card.Img
+                    style={{ height: '160px' }}
+                    variant="top"
+                    src="https://picsum.photos/800/600?random=2"
+                  />
+                  <Card.Body style={{ height: '97px' }}>
+                    <Card.Title>Tom Holland</Card.Title>
+                    <Card.Text>
+                      Peter Parker / Spider-Man
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Carousel.Item>
+
+              <Carousel.Item className="my-3">
+                <Card style={{ width: "140px" }}>
+                  <Card.Img
+                    style={{ height: '160px' }}
+                    variant="top"
+                    src="https://picsum.photos/800/600?random=2"
+                  />
+                  <Card.Body style={{ height: '97px' }}>
+                    <Card.Title>Tom Holland</Card.Title>
+                    <Card.Text>
+                      Peter Parker / Spider-Man
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Carousel.Item>
+
+
+              <Carousel.Item className="my-3">
+                <Card style={{ width: "140px" }}>
+                  <Card.Img
+                    style={{ height: '160px' }}
+                    variant="top"
+                    src="https://picsum.photos/800/600?random=2"
+                  />
+                  <Card.Body style={{ height: '97px' }}>
+                    <Card.Title>Tom Holland</Card.Title>
+                    <Card.Text>
+                      Peter Parker / Spider-Man
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Carousel.Item>
+
+              <Carousel.Item className="my-3">
+                <Card style={{ width: "140px" }}>
+                  <Card.Img
+                    style={{ height: '160px' }}
+                    variant="top"
+                    src="https://picsum.photos/800/600?random=2"
+                  />
+                  <Card.Body style={{ height: '97px' }}>
+                    <Card.Title>Tom Holland</Card.Title>
+                    <Card.Text>
+                      Peter Parker / Spider-Man
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Carousel.Item>
+
+              <Carousel.Item className="my-3">
+                <Card style={{ width: "140px" }}>
+                  <Card.Img
+                    style={{ height: '160px' }}
+                    variant="top"
+                    src="https://picsum.photos/800/600?random=2"
+                  />
+                  <Card.Body style={{ height: '97px' }}>
+                    <Card.Title>Tom Holland</Card.Title>
+                    <Card.Text>
+                      Peter Parker / Spider-Man
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Carousel.Item>
+
+              <Carousel.Item className="my-3">
+                <Card style={{ width: "140px" }}>
+                  <Card.Img
+                    style={{ height: '160px' }}
+                    variant="top"
+                    src="https://picsum.photos/800/600?random=2"
+                  />
+                  <Card.Body style={{ height: '97px' }}>
+                    <Card.Title>Tom Holland</Card.Title>
+                    <Card.Text>
+                      Peter Parker / Spider-Man
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Carousel.Item>
+
+              <Carousel.Item className="my-3">
+                <Card style={{ width: "140px" }}>
+                  <Card.Img
+                    style={{ height: '160px' }}
+                    variant="top"
+                    src="https://picsum.photos/800/600?random=2"
+                  />
+                  <Card.Body style={{ height: '97px' }}>
+                    <Card.Title>Tom Holland</Card.Title>
+                    <Card.Text>
+                      Peter Parker / Spider-Man
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Carousel.Item>
+
+              <Carousel.Item className="my-3">
+                <Card style={{ width: "140px" }}>
+                  <Card.Img
+                    style={{ height: '160px' }}
+                    variant="top"
+                    src="https://picsum.photos/800/600?random=2"
+                  />
+                  <Card.Body style={{ height: '97px' }}>
+                    <Card.Title>Tom Holland</Card.Title>
+                    <Card.Text>
+                      Peter Parker / Spider-Man
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Carousel.Item>
+
+              <Carousel.Item className="my-3">
+                <Card style={{ width: "140px" }}>
+                  <Card.Img
+                    style={{ height: '160px' }}
+                    variant="top"
+                    src="https://picsum.photos/800/600?random=2"
+                  />
+                  <Card.Body style={{ height: '97px' }}>
+                    <Card.Title>Tom Holland</Card.Title>
+                    <Card.Text>
+                      Peter Parker / Spider-Man
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Carousel.Item>
+
+              <Carousel.Item className="my-3">
+                <Card style={{ width: "140px" }}>
+                  <Card.Img
+                    style={{ height: '160px' }}
+                    variant="top"
+                    src="https://picsum.photos/800/600?random=2"
+                  />
+                  <Card.Body style={{ height: '97px' }}>
+                    <Card.Title>Tom Holland</Card.Title>
+                    <Card.Text>
+                      Peter Parker / Spider-Man
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Carousel.Item>
+
+              <Carousel.Item className="my-3">
+                <Card style={{ width: "140px" }}>
+                  <Card.Img
+                    style={{ height: '160px' }}
+                    variant="top"
+                    src="https://picsum.photos/800/600?random=2"
+                  />
+                  <Card.Body style={{ height: '97px' }}>
+                    <Card.Title>Tom Holland</Card.Title>
+                    <Card.Text>
+                      Peter Parker / Spider-Man
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Carousel.Item>
+
+              <Carousel.Item className="my-3">
+                <Card style={{ width: "140px" }}>
+                  <Card.Img
+                    style={{ height: '160px' }}
+                    variant="top"
+                    src="https://picsum.photos/800/600?random=2"
+                  />
+                  <Card.Body style={{ height: '97px' }}>
+                    <Card.Title>Tom Holland</Card.Title>
+                    <Card.Text>
+                      Peter Parker / Spider-Man
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Carousel.Item>
+
+            </Carousel>
+          </Col>
+          <Col lg={4} className="bg-warning">
+            ...
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 };
