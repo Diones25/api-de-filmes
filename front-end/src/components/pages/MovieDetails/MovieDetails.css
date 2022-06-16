@@ -106,3 +106,19 @@ ul li{
     margin-top: -15px;
     color: #fff;
 }
+.social_links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: -5px;
+}
+.social_links .facebook img{
+    width: 40px;    
+}
+.social_links .twitter img, .instagram img, .homepage  img {
+    width: 30px;   
+}
+.social_links.facebook img, .twitter img, .instagram img, .homepage  img {
+    margin-right: 10px;   
+    margin-left: 10px;
+}
