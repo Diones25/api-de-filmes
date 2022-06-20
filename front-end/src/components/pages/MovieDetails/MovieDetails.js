@@ -25,7 +25,7 @@ const MovieDetails = () => {
         console.log(response.data);
         setMovieDetails(response.data);
         setLoading(false);
-      })
+      },[id])
       .catch((err) => {
         console.log(err);
       });
@@ -33,15 +33,12 @@ const MovieDetails = () => {
 
   return (
     <>
-      {/* {movieDetails.map((item, index) => (
-        <h1>{item.title}</h1>
-      ))} */}
-
       <div
         style={{
-          backgroundImage: `url(${poster})`,
+          backgroundImage: `url(${`https://www.themoviedb.org/t/p/w220_and_h330_face/`}.${movieDetails.backdrop_path })`,
           backgroundRepeat: "no-repeat",
           backgroundSize: "100% 100%",
+          backgroundPosition: "center",
           position: "relative",
         }}
       >
@@ -54,13 +51,13 @@ const MovieDetails = () => {
                     <Card.Img
                       className="PosterImage"
                       variant="top"
-                      src={spider}
+                      src={`${`https://www.themoviedb.org/t/p/w220_and_h330_face/`}.${movieDetails.poster_path }`}
                     />
                   </div>
                   <Card.Body className="cardBody">
                     <div className="title">
                       <h2>
-                        Homem-Aranha: Sem Volta Para Casa{" "}
+                        {movieDetails.title}{" "}
                         <span className="ano">(2022)</span>
                       </h2>
                     </div>
@@ -79,8 +76,8 @@ const MovieDetails = () => {
                         <ul>
                           <li className="d-flex">
                             <div className="rating">
-                              <div className={`progress-circle over50 p60`}>
-                                <span className="number">60</span>
+                              <div className={`progress-circle over50 p${movieDetails.vote_average * 10}`}>
+                                <span className="number">{movieDetails.vote_average * 10}</span>
                                 <span className="percent">%</span>
                                 <div className="left-half-clipper">
                                   <div className="first50-bar"></div>
@@ -101,16 +98,11 @@ const MovieDetails = () => {
                       </div>
                     </div>
                     <div className="header_info">
-                      <h3 className="tagline">O Multiverso está aberto.</h3>
+                      <h3 className="tagline">{movieDetails.tagline}</h3>
                       <h3>Sinopse</h3>
                       <div className="tagline">
                         <p>
-                          Peter Parker é desmascarado e não consegue mais
-                          separar sua vida normal dos grandes riscos de ser um
-                          super-herói. Quando ele pede ajuda ao Doutor Estranho,
-                          os riscos se tornam ainda mais perigosos, e o forçam a
-                          descobrir o que realmente significa ser o
-                          Homem-Aranha...
+                          {movieDetails.overview}
                         </p>
                       </div>
 
