@@ -18,7 +18,6 @@ const MoviesPopulares = () => {
     api
       .get("/filmes/populares")
       .then((response) => {
-        console.log(response.data);
         setMoviePopulares(response.data);
         //setLoading(false);
       })

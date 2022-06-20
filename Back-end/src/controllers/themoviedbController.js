@@ -76,10 +76,10 @@ const getFilmesBemAvaliados = async (req, res) => {
 };
 
 const getDetalheFilmeId = async (req, res) => {
-  const movie_id = req.params.movie_id;
+  const id = req.params.id;
 
   await api
-    .get(`/movie/${movie_id}`)
+    .get(`/movie/${id}`)
     .then((response) => {
       console.log(JSON.stringify(response.data));
       return res.status(200).json(response.data);

@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Card } from "react-bootstrap";
+import api from '../../../service/api.js';
 import  Carousel from 'react-grid-carousel'
 
 import "./MovieDetails.css";
@@ -11,8 +14,29 @@ import spider from "../../../assets/img/spider.jpg";
 import poster from '../../../assets/img/poster.jpg'
 
 const MovieDetails = () => {
+  const { id } = useParams();
+  const [movieDetails, setMovieDetails] = useState([]);
+  let [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    api
+      .get(`/filme/populares/${id}`)
+      .then((response) => {
+        console.log(response.data);
+        setMovieDetails(response.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <>
+      {/* {movieDetails.map((item, index) => (
+        <h1>{item.title}</h1>
+      ))} */}
+
       <div
         style={{
           backgroundImage: `url(${poster})`,
@@ -157,7 +181,7 @@ const MovieDetails = () => {
                     variant="top"
                     src="https://picsum.photos/800/600?random=2"
                   />
-                  <Card.Body className="mb-5"  style={{ height: "97px" }}>
+                  <Card.Body className="mb-5" style={{ height: "97px" }}>
                     <Card.Title>Tom Holland</Card.Title>
                     <Card.Text>Peter Parker / Spider-Man</Card.Text>
                   </Card.Body>
@@ -333,7 +357,7 @@ const MovieDetails = () => {
               </Carousel.Item>
             </Carousel>
           </Col>
-          <Col lg={4}>            
+          <Col lg={4}>
             <div className="social_links">
               <div className="facebook">
                 <a
@@ -386,24 +410,34 @@ const MovieDetails = () => {
                   <img src={link} />
                 </a>
               </div>
-            </div> 
+            </div>
 
             <div className="d-flex flex-column">
-              <span><strong>Título original</strong></span>
+              <span>
+                <strong>Título original</strong>
+              </span>
               <span className="mb-3">Spider-Man: No Way Home</span>
 
-              <span><strong>Situação</strong></span>
+              <span>
+                <strong>Situação</strong>
+              </span>
               <span className="mb-3">Lançado</span>
 
-              <span><strong>Idioma original</strong></span>
+              <span>
+                <strong>Idioma original</strong>
+              </span>
               <span className="mb-3">Inglês</span>
 
-              <span><strong>Orçamento</strong></span>
+              <span>
+                <strong>Orçamento</strong>
+              </span>
               <span className="mb-3">$200,000,000.00</span>
 
-              <span><strong>Receita</strong></span>
+              <span>
+                <strong>Receita</strong>
+              </span>
               <span>$1,892,000,000.00</span>
-            </div>           
+            </div>
           </Col>
         </Row>
       </Container>
