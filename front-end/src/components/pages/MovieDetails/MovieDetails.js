@@ -16,20 +16,33 @@ import poster from '../../../assets/img/poster.jpg'
 const MovieDetails = () => {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState([]);
+  const [credits, setCredits] = useState([]);
   let [loading, setLoading] = useState(true);
 
   useEffect(() => {
     api
       .get(`/filme/populares/${id}`)
       .then((response) => {
-        console.log(response.data);
         setMovieDetails(response.data);
         setLoading(false);
-      },[id])
+      })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [id]);
+
+  useEffect(() => {
+    api
+      .get(`/filme/${id}/credits`)
+      .then((response) => {
+        console.log("CRÈDITOS",response.data)
+        setCredits(response.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [id]);
 
   return (
     <>
@@ -57,8 +70,7 @@ const MovieDetails = () => {
                   <Card.Body className="cardBody">
                     <div className="title">
                       <h2>
-                        {movieDetails.title}{" "}
-                        <span className="ano">(2022)</span>
+                        {movieDetails.title} <span className="ano">(2022)</span>
                       </h2>
                     </div>
                     <div className="detais">
@@ -76,8 +88,14 @@ const MovieDetails = () => {
                         <ul>
                           <li className="d-flex">
                             <div className="rating">
-                              <div className={`progress-circle over50 p${movieDetails.vote_average * 10}`}>
-                                <span className="number">{movieDetails.vote_average * 10}</span>
+                              <div
+                                className={`progress-circle over50 p${
+                                  movieDetails.vote_average * 10
+                                }`}
+                              >
+                                <span className="number">
+                                  {movieDetails.vote_average * 10}
+                                </span>
                                 <span className="percent">%</span>
                                 <div className="left-half-clipper">
                                   <div className="first50-bar"></div>
@@ -101,57 +119,23 @@ const MovieDetails = () => {
                       <h3 className="tagline">{movieDetails.tagline}</h3>
                       <h3>Sinopse</h3>
                       <div className="tagline">
-                        <p>
-                          {movieDetails.overview}
-                        </p>
+                        <p>{movieDetails.overview}</p>
                       </div>
 
-                      <ul className="people">
-                        <li className="profile">
-                          <p>
-                            <a id="name" href="/person/7625-steve-ditko">
-                              Steve Ditko
-                            </a>
-                          </p>
-                          <p id="character">Characters</p>
-                        </li>
-
-                        <li className="profile">
-                          <p>
-                            <a id="name" href="/person/7624-stan-lee">
-                              Stan Lee
-                            </a>
-                          </p>
-                          <p id="character">Characters</p>
-                        </li>
-
-                        <li className="profile">
-                          <p>
-                            <a id="name" href="/person/1293994-jon-watts">
-                              Jon Watts
-                            </a>
-                          </p>
-                          <p id="character">Director</p>
-                        </li>
-
-                        <li className="profile">
-                          <p>
-                            <a id="name" href="/person/1246890-chris-mckenna">
-                              Chris McKenna
-                            </a>
-                          </p>
-                          <p id="character">Writer</p>
-                        </li>
-
-                        <li className="profile">
-                          <p>
-                            <a id="name" href="/person/1350918-erik-sommers">
-                              Erik Sommers
-                            </a>
-                          </p>
-                          <p id="character">Writer</p>
-                        </li>
-                      </ul>
+                      {/* <ul className="people">
+                        {credits.map((item, index) => (
+                          <div key={index}>
+                            <li className="profile">
+                              <p>
+                                <a id="name" href="/person/7625-steve-ditko">
+                                  {item.crew.name}
+                                </a>
+                              </p>
+                              <p id="character">{item.crew.job}</p>
+                            </li>
+                          </div>
+                        ))}
+                      </ul> */}
                     </div>
                   </Card.Body>
                 </Card>
