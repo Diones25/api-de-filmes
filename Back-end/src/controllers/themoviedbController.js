@@ -89,20 +89,6 @@ const getDetalheFilmeId = async (req, res) => {
     });
 };
 
-const getCredits = async (req, res) => {
-  const id = req.params.id;
-
-  await api
-    .get(`/movie/${id}/credits`)
-    .then((response) => {
-      console.log(JSON.stringify(response.data));
-      return res.status(200).json(response.data);
-    })
-    .catch(() => {
-      return res.status(400).json({ message: "Créditos não encontrado!" });
-    });
-};
-
 const getSearchFilme = async (req, res) => {
   const query = req.query["query"];
 
@@ -211,7 +197,6 @@ export default {
   getFilmesProximasEstreias,
   getFilmesBemAvaliados,
   getDetalheFilmeId,
-  getCredits,
   getSearchFilme,
   getSeriesPopulares,
   getSeriesPopularesId,

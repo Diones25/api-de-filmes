@@ -16,7 +16,6 @@ import poster from '../../../assets/img/poster.jpg'
 const MovieDetails = () => {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState([]);
-  const [credits, setCredits] = useState([]);
   let [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -24,19 +23,6 @@ const MovieDetails = () => {
       .get(`/filme/populares/${id}`)
       .then((response) => {
         setMovieDetails(response.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, [id]);
-
-  useEffect(() => {
-    api
-      .get(`/filme/${id}/credits`)
-      .then((response) => {
-        console.log("CRÈDITOS",response.data)
-        setCredits(response.data);
         setLoading(false);
       })
       .catch((err) => {
@@ -121,21 +107,6 @@ const MovieDetails = () => {
                       <div className="tagline">
                         <p>{movieDetails.overview}</p>
                       </div>
-
-                      {/* <ul className="people">
-                        {credits.map((item, index) => (
-                          <div key={index}>
-                            <li className="profile">
-                              <p>
-                                <a id="name" href="/person/7625-steve-ditko">
-                                  {item.crew.name}
-                                </a>
-                              </p>
-                              <p id="character">{item.crew.job}</p>
-                            </li>
-                          </div>
-                        ))}
-                      </ul> */}
                     </div>
                   </Card.Body>
                 </Card>
@@ -146,273 +117,50 @@ const MovieDetails = () => {
       </div>
 
       <Container className="mb-5">
-        <Row>
-          <Col lg={8} className="pb-3">
-            <h3>Elenco principal</h3>
-            <Carousel cols={6} rows={1} gap={10} loop>
-              <Carousel.Item className="my-3">
-                <Card style={{ width: "140px" }}>
-                  <Card.Img
-                    style={{ height: "160px" }}
-                    variant="top"
-                    src="https://picsum.photos/800/600?random=2"
-                  />
-                  <Card.Body className="mb-5" style={{ height: "97px" }}>
-                    <Card.Title>Tom Holland</Card.Title>
-                    <Card.Text>Peter Parker / Spider-Man</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Carousel.Item>
-
-              <Carousel.Item className="my-3">
-                <Card style={{ width: "140px" }}>
-                  <Card.Img
-                    style={{ height: "160px" }}
-                    variant="top"
-                    src="https://picsum.photos/800/600?random=2"
-                  />
-                  <Card.Body className="mb-5" style={{ height: "97px" }}>
-                    <Card.Title>Tom Holland</Card.Title>
-                    <Card.Text>Peter Parker / Spider-Man</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Carousel.Item>
-
-              <Carousel.Item className="my-3">
-                <Card style={{ width: "140px" }}>
-                  <Card.Img
-                    style={{ height: "160px" }}
-                    variant="top"
-                    src="https://picsum.photos/800/600?random=2"
-                  />
-                  <Card.Body className="mb-5" style={{ height: "97px" }}>
-                    <Card.Title>Tom Holland</Card.Title>
-                    <Card.Text>Peter Parker / Spider-Man</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Carousel.Item>
-
-              <Carousel.Item className="my-3">
-                <Card style={{ width: "140px" }}>
-                  <Card.Img
-                    style={{ height: "160px" }}
-                    variant="top"
-                    src="https://picsum.photos/800/600?random=2"
-                  />
-                  <Card.Body className="mb-5" style={{ height: "97px" }}>
-                    <Card.Title>Tom Holland</Card.Title>
-                    <Card.Text>Peter Parker / Spider-Man</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Carousel.Item>
-
-              <Carousel.Item className="my-3">
-                <Card style={{ width: "140px" }}>
-                  <Card.Img
-                    style={{ height: "160px" }}
-                    variant="top"
-                    src="https://picsum.photos/800/600?random=2"
-                  />
-                  <Card.Body className="mb-5" style={{ height: "97px" }}>
-                    <Card.Title>Tom Holland</Card.Title>
-                    <Card.Text>Peter Parker / Spider-Man</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Carousel.Item>
-
-              <Carousel.Item className="my-3">
-                <Card style={{ width: "140px" }}>
-                  <Card.Img
-                    style={{ height: "160px" }}
-                    variant="top"
-                    src="https://picsum.photos/800/600?random=2"
-                  />
-                  <Card.Body className="mb-5" style={{ height: "97px" }}>
-                    <Card.Title>Tom Holland</Card.Title>
-                    <Card.Text>Peter Parker / Spider-Man</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Carousel.Item>
-
-              <Carousel.Item className="my-3">
-                <Card style={{ width: "140px" }}>
-                  <Card.Img
-                    style={{ height: "160px" }}
-                    variant="top"
-                    src="https://picsum.photos/800/600?random=2"
-                  />
-                  <Card.Body className="mb-5" style={{ height: "97px" }}>
-                    <Card.Title>Tom Holland</Card.Title>
-                    <Card.Text>Peter Parker / Spider-Man</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Carousel.Item>
-
-              <Carousel.Item className="my-3">
-                <Card style={{ width: "140px" }}>
-                  <Card.Img
-                    style={{ height: "160px" }}
-                    variant="top"
-                    src="https://picsum.photos/800/600?random=2"
-                  />
-                  <Card.Body className="mb-5" style={{ height: "97px" }}>
-                    <Card.Title>Tom Holland</Card.Title>
-                    <Card.Text>Peter Parker / Spider-Man</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Carousel.Item>
-
-              <Carousel.Item className="my-3">
-                <Card style={{ width: "140px" }}>
-                  <Card.Img
-                    style={{ height: "160px" }}
-                    variant="top"
-                    src="https://picsum.photos/800/600?random=2"
-                  />
-                  <Card.Body className="mb-5" style={{ height: "97px" }}>
-                    <Card.Title>Tom Holland</Card.Title>
-                    <Card.Text>Peter Parker / Spider-Man</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Carousel.Item>
-
-              <Carousel.Item className="my-3">
-                <Card style={{ width: "140px" }}>
-                  <Card.Img
-                    style={{ height: "160px" }}
-                    variant="top"
-                    src="https://picsum.photos/800/600?random=2"
-                  />
-                  <Card.Body className="mb-5" style={{ height: "97px" }}>
-                    <Card.Title>Tom Holland</Card.Title>
-                    <Card.Text>Peter Parker / Spider-Man</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Carousel.Item>
-
-              <Carousel.Item className="my-3">
-                <Card style={{ width: "140px" }}>
-                  <Card.Img
-                    style={{ height: "160px" }}
-                    variant="top"
-                    src="https://picsum.photos/800/600?random=2"
-                  />
-                  <Card.Body className="mb-5" style={{ height: "97px" }}>
-                    <Card.Title>Tom Holland</Card.Title>
-                    <Card.Text>Peter Parker / Spider-Man</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Carousel.Item>
-
-              <Carousel.Item className="my-3">
-                <Card style={{ width: "140px" }}>
-                  <Card.Img
-                    style={{ height: "160px" }}
-                    variant="top"
-                    src="https://picsum.photos/800/600?random=2"
-                  />
-                  <Card.Body className="mb-5" style={{ height: "97px" }}>
-                    <Card.Title>Tom Holland</Card.Title>
-                    <Card.Text>Peter Parker / Spider-Man</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Carousel.Item>
-
-              <Carousel.Item className="my-3">
-                <Card style={{ width: "140px" }}>
-                  <Card.Img
-                    style={{ height: "160px" }}
-                    variant="top"
-                    src="https://picsum.photos/800/600?random=2"
-                  />
-                  <Card.Body className="mb-5" style={{ height: "97px" }}>
-                    <Card.Title>Tom Holland</Card.Title>
-                    <Card.Text>Peter Parker / Spider-Man</Card.Text>
-                  </Card.Body>
-                </Card>
-              </Carousel.Item>
-            </Carousel>
-          </Col>
-          <Col lg={4}>
-            <div className="social_links">
-              <div className="facebook">
-                <a
-                  className="social_link"
-                  title="Visitar Facebook"
-                  href="https://www.facebook.com/SpiderManMovie"
-                  target="_blank"
-                  rel="noopener"
-                  data-role="tooltip"
-                >
-                  <img src={facebook} />
-                </a>
-              </div>
-
-              <div className="twitter">
-                <a
-                  className="social_link"
-                  title=""
-                  href="https://twitter.com/spidermanmovie"
-                  target="_blank"
-                  rel="noopener"
-                  data-role="tooltip"
-                >
-                  <img src={twitter} />
-                </a>
-              </div>
-
-              <div className="instagram">
-                <a
-                  className="social_link"
-                  title="Visitar Instagram"
-                  href="https://instagram.com/spidermanmovie/"
-                  target="_blank"
-                  rel="noopener"
-                  data-role="tooltip"
-                >
-                  <img src={instagram} />
-                </a>
-              </div>
-
-              <div className="homepage">
-                <a
-                  className="social_link"
-                  title="Visitar página inicial"
-                  href="https://www.marvel.com/movies/spider-man-no-way-home"
-                  target="_blank"
-                  rel="noopener"
-                  data-role="tooltip"
-                >
-                  <img src={link} />
-                </a>
-              </div>
-            </div>
-
+        <Row>          
+          <Col lg={2}>
             <div className="d-flex flex-column">
               <span>
                 <strong>Título original</strong>
               </span>
-              <span className="mb-3">Spider-Man: No Way Home</span>
+              <span className="mb-3">{movieDetails.original_title}</span>
+            </div>
+          </Col>
 
+          <Col lg={2}>
+            <div className="d-flex flex-column">
               <span>
                 <strong>Situação</strong>
               </span>
-              <span className="mb-3">Lançado</span>
+              <span className="mb-3">Lançado</span>              
+            </div>
+          </Col>
 
+          <Col lg={2}>
+
+            <div className="d-flex flex-column">
               <span>
                 <strong>Idioma original</strong>
               </span>
-              <span className="mb-3">Inglês</span>
+              <span className="mb-3">{movieDetails.original_language}</span>
+            </div>
+          </Col>
 
-              <span>
-                <strong>Orçamento</strong>
-              </span>
-              <span className="mb-3">$200,000,000.00</span>
-
+          <Col lg={2}>
+            <div className="d-flex flex-column">              
               <span>
                 <strong>Receita</strong>
               </span>
-              <span>$1,892,000,000.00</span>
+              <span>{movieDetails.revenue}</span>
+            </div>
+          </Col>
+
+          <Col lg={2}>
+            <div className="d-flex flex-column">              
+              <span>
+                <strong>Receita</strong>
+              </span>
+              <span>{movieDetails.revenue}</span>
             </div>
           </Col>
         </Row>
