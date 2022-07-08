@@ -89,6 +89,35 @@ const getDetalheFilmeId = async (req, res) => {
     });
 };
 
+const getDatasLancamento = async(req, res) => {
+  const id = req.params.id;
+
+  await api
+    .get(`/movie/${id}/release_dates`)
+    .then((response) => {
+      let data = response.data.results[40].release_dates[1].release_date;
+
+      data = new Date(data);
+      var date = data.getDate() + 1;
+      var month = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"][data.getMonth()];
+      var year = data.getFullYear();
+
+      let retornoEsperado = {
+        iso: response.data.results[40].iso_3166_1,
+        certification: response.data.results[40].release_dates[1].certification,
+        release_date: `${date}/${month}/${year}`,
+        ano: `${year}`
+      }
+
+      return res.status(200).json(response.data);
+    })
+    .catch(() => {
+      return res
+        .status(400)
+        .json({ message: "Data do filme não encontrado!" });
+    });  
+}
+
 const getSearchFilme = async (req, res) => {
   const query = req.query["query"];
 
@@ -197,6 +226,7 @@ export default {
   getFilmesProximasEstreias,
   getFilmesBemAvaliados,
   getDetalheFilmeId,
+  getDatasLancamento,
   getSearchFilme,
   getSeriesPopulares,
   getSeriesPopularesId,

@@ -8,6 +8,7 @@ router.get('/filmes/cartaz', themoviedbController.getFilmesEmCartaz);
 router.get('/filmes/proximas/estreias', themoviedbController.getFilmesProximasEstreias);
 router.get('/filmes/avaliados', themoviedbController.getFilmesBemAvaliados);
 router.get('/filme/populares/:id', themoviedbController.getDetalheFilmeId);
+router.get('/filme/:id/lancamento', themoviedbController.getDatasLancamento);
 router.get('/search/movie', themoviedbController.getSearchFilme);
 router.get('/series/populares', themoviedbController.getSeriesPopulares);
 router.get('/series/populares/:tv_id', themoviedbController.getSeriesPopularesId);

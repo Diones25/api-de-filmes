@@ -10,12 +10,11 @@ import facebook from "../../../assets/img/Facebook.png";
 import instagram from "../../../assets/img/instagram.png";
 import link from "../../../assets/img/link.png";
 import twitter from "../../../assets/img/twiter.png";
-import spider from "../../../assets/img/spider.jpg";
-import poster from '../../../assets/img/poster.jpg'
 
 const MovieDetails = () => {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState([]);
+  const [movieDeteLancamento, setmovieDeteLancamento] = useState([]);
   let [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -24,6 +23,18 @@ const MovieDetails = () => {
       .then((response) => {
         setMovieDetails(response.data);
         setLoading(false);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, [id]);
+
+  useEffect(() => {
+    api
+      .get(`/filme/${id}/lancamento`)
+      .then((response) => {
+        setmovieDeteLancamento(response.data);
+        console.log(response.data)        
       })
       .catch((err) => {
         console.log(err);
@@ -42,7 +53,7 @@ const MovieDetails = () => {
         }}
       >
         <div id="DetailsContainer" className="my-5">
-          <Container fluid>
+          <Container>
             <Row>
               <Col md={12}>
                 <Card id="card-container" className="py-5">
@@ -56,12 +67,12 @@ const MovieDetails = () => {
                   <Card.Body className="cardBody">
                     <div className="title">
                       <h2>
-                        {movieDetails.title} <span className="ano">(2022)</span>
+                        {movieDetails.title} <span className="ano">({movieDeteLancamento.ano})</span>
                       </h2>
                     </div>
                     <div className="detais">
-                      <span className="classificacao">12</span>
-                      <span className="date">16/12/2021 (BR)</span>
+                      <span className="classificacao">{movieDeteLancamento.certification}</span>
+                      <span className="date">{movieDeteLancamento.release_date} ({movieDeteLancamento.iso}) </span>
                       <span>
                         <a>Ação, </a>
                         <a>Aventura, </a>
