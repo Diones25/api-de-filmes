@@ -27,9 +27,21 @@ const getFilmesPopulares = async (req, res) => {
       return res.status(200).json(retornoEsperado);
     })
     .catch(() => {
-      return res
-        .status(400)
-        .json({ message: "Filmes populares não encontrado!" });
+      return res.status(400).json({ message: "Filmes populares não encontrado!" });
+    });
+};
+
+const getDetalheFilmeId = async (req, res) => {
+  const id = req.params.id;
+
+  await api
+    .get(`/movie/${id}`)
+    .then((response) => {
+      console.log(JSON.stringify(response.data));
+      return res.status(200).json(response.data);
+    })
+    .catch(() => {
+      return res.status(400).json({ message: "Filmes não encontrado!" });
     });
 };
 
@@ -75,20 +87,6 @@ const getFilmesBemAvaliados = async (req, res) => {
     });
 };
 
-const getDetalheFilmeId = async (req, res) => {
-  const id = req.params.id;
-
-  await api
-    .get(`/movie/${id}`)
-    .then((response) => {
-      console.log(JSON.stringify(response.data));
-      return res.status(200).json(response.data);
-    })
-    .catch(() => {
-      return res.status(400).json({ message: "Filmes não encontrado!" });
-    });
-};
-
 const getDatasLancamento = async(req, res) => {
   const id = req.params.id;
 
@@ -109,7 +107,7 @@ const getDatasLancamento = async(req, res) => {
         ano: `${year}`
       }
 
-      return res.status(200).json(response.data);
+      return res.status(200).json(retornoEsperado);
     })
     .catch(() => {
       return res
