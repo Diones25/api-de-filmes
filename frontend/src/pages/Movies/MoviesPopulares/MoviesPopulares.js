@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import api from "../../service/api.js";
+import api from "../../../service/api.js";
 
-import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
-import Banner from '../../components/Banner/Banner.js';
+import Banner from '../../../components/Banner/Banner.js';
 import ScaleLoader from 'react-spinners/ScaleLoader'
-import "./MoviesPopulares.css";
+import "../Movie.css";
 
-import InputSearch from "../../components/InputSearch/InputSearch.js";
+import InputSearch from "../../../components/InputSearch/InputSearch.js";
 import { css } from "@emotion/react";
 
 const override = css`
@@ -24,7 +24,7 @@ const MoviesPopulares = () => {
 
   useEffect(() => {
     api
-      .get("/filmes/populares")
+      .get("/movie/popular")
       .then((response) => {
         setMoviePopulares(response.data);
         setLoading(false);
@@ -61,7 +61,7 @@ const MoviesPopulares = () => {
             <Row>
               {moviePopulares.map((item, index) => (
                 <Col className="col my-2 md-4 lg-3" key={index}>
-                  <Link id="Link" to={`/filme/populares/${item.id}`}>
+                  <Link id="Link" to={`/movie/${item.id}`}>
                     <Card id="card" className="mb-4">
                       <Card.Img
                         id="cardImg"

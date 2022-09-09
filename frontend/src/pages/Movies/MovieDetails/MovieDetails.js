@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Card } from "react-bootstrap";
-import api from '../../service/api.js';
+import api from '../../../service/api.js';
 
 import "./MovieDetails.css";
 
@@ -11,7 +11,7 @@ const MovieDetails = () => {
 
   useEffect(() => {
     api
-      .get(`/filme/populares/${id}`)
+      .get(`/movie/${id}`)
       .then((response) => {
 
         let data = response.data.release_date;
@@ -57,8 +57,8 @@ const MovieDetails = () => {
         style={{
           backgroundImage: `url(${`https://image.tmdb.org/t/p/w1920_and_h800_face/`}.${movieDetails.backdrop_path })`,
           backgroundRepeat: "no-repeat",
-          backgroundSize: "100% 100%",
-          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundPosition: "top center",
           position: "relative",
           objectFit: 'cover'
         }}
@@ -67,8 +67,8 @@ const MovieDetails = () => {
           <Container>
             <Row>
               <Col md={12}>
-                <Card id="card-container" className="py-5">
-                  <div id="CardContainerDetails">
+                <Card id="card-container" className="d-flex flex-column flex-sm-column flex-md-column flex-lg-row py-5">
+                  <div id="CardContainerDetails" className="m-auto m-sm-auto m-md-auto">
                     <Card.Img
                       className="PosterImage"
                       variant="top"
@@ -77,20 +77,20 @@ const MovieDetails = () => {
                   </div>
                   <Card.Body className="cardBody">
                     <div className="title">
-                      <h2>
+                      <h2 className=" text-sm-center text-md-center text-lg-start text-xl-start">
                         {movieDetails.title} <span className="ano">({movieDetails.release_dateAno})</span>
                       </h2>
                     </div>
-                    <div className="detais">
+                    <div className="detais text-sm-center text-md-center text-lg-start text-xl-start">
                       <span className="classificacao">Data de lançamento:</span>
                       <span className="date">{movieDetails.release_date}</span>
                       <span className="duration">Duração: {movieDetails.runtime}</span>
                     </div>
                     <div className="mt-3">
                       <div className="popularity">
-                        <ul>
+                        <ul className="m-auto m-sm-auto m-md-auto m-lg-0 m-xl-0 py-3 py-sm-3 py-md-3 py-lg-0 py-xl-0">
                           <li className="d-flex">
-                            <div className="rating">
+                            <div className="rating ">
                               <div
                                 className={`progress-circle over50 p${
                                   (movieDetails.vote_average * 10).toFixed(0)
@@ -117,10 +117,10 @@ const MovieDetails = () => {
                         </ul>
                       </div>
                     </div>
-                    <div className="header_info">
+                    <div className="header_info text-sm-center text-md-center text-lg-start text-xl-start">
                       <h3 className="tagline">{movieDetails.tagline}</h3>
-                      <h3>Sinopse</h3>
-                      <div className="tagline">
+                      <h3 className="text-center text-sm-center text-md-center text-lg-start text-xl-start">Sinopse</h3>
+                      <div className="tagline px-4 px-lg-0 px-xl-0 text-justify text-sm-justify text-md-justify text-lg-start text-xl-start">
                         <p>{movieDetails.overview}</p>
                       </div>
                     </div>

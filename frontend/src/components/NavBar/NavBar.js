@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import React from "react";
+import { Link } from "react-router-dom";
+import { Container, Navbar, Nav } from "react-bootstrap";
 import "../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min";
 import logo from "../../assets/img/logo.png";
@@ -29,24 +30,17 @@ const NavBar = () => {
                 </span>
                 <ul className="dropdown-menu" aria-labelledby="filmes">
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Populares
-                    </a>
+                    <Link className="dropdown-item" to="/">Populares</Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Em cartaz
-                    </a>
+                    <Link className="dropdown-item" to="/movie/now_playing">Em cartaz</Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Próximas estréias
-                    </a>
+                    <Link className="dropdown-item" to="/movie/upcoming">Próximas estréias</Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Mais bem avaliados
-                    </a>
+                      <Link className="dropdown-item" to='/movie/top_rated'>Mais bem avaliados</Link>
+                    
                   </li>
                 </ul>
               </li>
