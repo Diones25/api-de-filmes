@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { Container, Row, Col, Card } from "react-bootstrap";
 import api from '../../../service/api.js';
 

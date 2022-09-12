@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import api from "../../../service/api.js";
 
-import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Banner from '../../../components/Banner/Banner.js';
 import ScaleLoader from 'react-spinners/ScaleLoader'
-import "../Movie.css";
+import "../Series.css";
 
 import InputSearch from "../../../components/InputSearch/InputSearch.js";
 import { css } from "@emotion/react";
@@ -18,15 +18,15 @@ const override = css`
   border-color: red;
 `;
 
-const MoviesPoster = () => {
-  const [moviesPoster, setMoviesPoster] = useState([]);
+const Top_rated = () => {
+  const [top_rated, setTop_rated] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     api
-      .get("/movie/now_playing")
+      .get("/tv/top_rated") 
       .then((response) => {
-        setMoviesPoster(response.data.results);
+        setTop_rated(response.data.results);
         setLoading(false);
       })
       .catch((err) => {
@@ -35,7 +35,6 @@ const MoviesPoster = () => {
   }, []);
 
   return (
-    //title, release_date, vote_average, poster_path
     <>
       <Banner />
       <div className="bgContainer" style={{ background: "#F5F5F5" }}>
@@ -57,9 +56,9 @@ const MoviesPoster = () => {
             </>
           )}
 
-          {moviesPoster &&
+          {top_rated &&
             <Row>
-              {moviesPoster.map((item, index) => (
+              {top_rated.map((item, index) => (
                 <Col className="col my-2 md-4 lg-3" key={index}>
                   <Link id="Link" to={`/movie/${item.id}`}>
                     <Card id="card" className="mb-4">
@@ -83,7 +82,7 @@ const MoviesPoster = () => {
                             <div className="value-bar"></div>
                           </div>
                         </div>
-                        <Card.Title className="title">{item.title}</Card.Title>
+                        <Card.Title className="title">{item.name}</Card.Title>
                         <Card.Text className="date">
                           {item.release_date}
                         </Card.Text>
@@ -100,4 +99,4 @@ const MoviesPoster = () => {
   );
 };
 
-export default MoviesPoster;
+export default Top_rated;

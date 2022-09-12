@@ -39,8 +39,7 @@ const NavBar = () => {
                     <Link className="dropdown-item" to="/movie/upcoming">Próximas estréias</Link>
                   </li>
                   <li>
-                      <Link className="dropdown-item" to='/movie/top_rated'>Mais bem avaliados</Link>
-                    
+                    <Link className="dropdown-item" to='/movie/top_rated'>Mais bem avaliados</Link>                    
                   </li>
                 </ul>
               </li>
@@ -58,24 +57,16 @@ const NavBar = () => {
                 </span>
                 <ul className="dropdown-menu" aria-labelledby="series">
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Populares
-                    </a>
+                    <Link className="dropdown-item" to='/tv'>Populares</Link>                                      
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Em exibição hoje
-                    </a>
+                    <Link className="dropdown-item" to='/tv/airing_today'>Em exibição hoje</Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Na tv
-                    </a>
+                    <Link className="dropdown-item" to='/tv/on_the_air'>Na tv</Link>
                   </li>
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Mais bem avaliados
-                    </a>
+                    <Link className="dropdown-item" to='/tv/top_rated'>Mais bem avaliados</Link>
                   </li>
                 </ul>
               </li>

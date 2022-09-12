@@ -26,7 +26,7 @@ const MoviesPopulares = () => {
     api
       .get("/movie/popular")
       .then((response) => {
-        setMoviePopulares(response.data);
+        setMoviePopulares(response.data.results);
         setLoading(false);
       })
       .catch((err) => {

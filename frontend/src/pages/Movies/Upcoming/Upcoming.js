@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import api from "../../../service/api.js";
 
-import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Banner from '../../../components/Banner/Banner.js';
 import ScaleLoader from 'react-spinners/ScaleLoader'
@@ -35,7 +35,6 @@ const Upcoming = () => {
   }, []);
 
   return (
-    //title, release_date, vote_average, poster_path
     <>
       <Banner />
       <div className="bgContainer" style={{ background: "#F5F5F5" }}>
@@ -94,7 +93,6 @@ const Upcoming = () => {
               ))}
             </Row>
           }
-
         </Container>
       </div>
     </>
