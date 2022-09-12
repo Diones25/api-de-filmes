@@ -45,8 +45,7 @@ const SeriesDetails = () => {
           name: response.data.name,    
           vote_average: response.data.vote_average
         }        
-        setSeriesDetails(resposta);   
-        console.log(resposta)   
+        setSeriesDetails(resposta);      
       })
       .catch((err) => {
         console.log(err);
