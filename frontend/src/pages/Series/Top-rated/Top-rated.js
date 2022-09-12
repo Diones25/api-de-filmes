@@ -84,7 +84,7 @@ const Top_rated = () => {
                         </div>
                         <Card.Title className="title">{item.name}</Card.Title>
                         <Card.Text className="date">
-                          {item.release_date}
+                          {item.first_air_date}
                         </Card.Text>
                       </Card.Body>
                     </Card>

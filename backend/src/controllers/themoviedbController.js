@@ -10,9 +10,10 @@ const getFilmesPopulares = async (req, res) => {
 
       let retornoEsperado = dados.map((dado) => {
         let data = dado.release_date;
+        let dia = data.split('-')[2];
 
         data = new Date(data);
-        var date = data.getDate() + 1;
+        var day = dia;
         var month = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"][data.getMonth()];
         var year = data.getFullYear();
 
@@ -21,7 +22,7 @@ const getFilmesPopulares = async (req, res) => {
           poster_path: dado.poster_path,
           vote_average: dado.vote_average,
           title: dado.title,
-          release_date: `${date} de ${month} de ${year}`,          
+          release_date: `${day} de ${month} de ${year}`,          
         };
       });
 
@@ -49,9 +50,10 @@ const getFilmesProximasEstreias = async (req, res) => {
 
       let retornoEsperado = dados.map((dado) => {
         let data = dado.release_date;
+        let dia = data.split('-')[2];
 
         data = new Date(data);
-        var date = data.getDate() + 1;
+        var day = dia;
         var month = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"][data.getMonth()];
         var year = data.getFullYear();
 
@@ -60,7 +62,7 @@ const getFilmesProximasEstreias = async (req, res) => {
           poster_path: dado.poster_path,
           vote_average: dado.vote_average,
           title: dado.title,
-          release_date: `${date} de ${month} de ${year}`,          
+          release_date: `${day} de ${month} de ${year}`,          
         };
       });
 
@@ -101,9 +103,10 @@ const getFilmesEmCartaz = async (req, res) => {
 
       let retornoEsperado = dados.map((dado) => {
         let data = dado.release_date;
+        let dia = data.split('-')[2];
 
         data = new Date(data);
-        var date = data.getDate() + 1;
+        var day = dia;
         var month = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"][data.getMonth()];
         var year = data.getFullYear();
 
@@ -112,7 +115,7 @@ const getFilmesEmCartaz = async (req, res) => {
           poster_path: dado.poster_path,
           vote_average: dado.vote_average,
           title: dado.title,
-          release_date: `${date} de ${month} de ${year}`,          
+          release_date: `${day} de ${month} de ${year}`,          
         };
       });
 
@@ -141,9 +144,10 @@ const getFilmesBemAvaliados = async (req, res) => {
 
       let retornoEsperado = dados.map((dado) => {
         let data = dado.release_date;
+        let dia = data.split('-')[2];
 
         data = new Date(data);
-        var date = data.getDate() + 1;
+        var day = dia;
         var month = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"][data.getMonth()];
         var year = data.getFullYear();
 
@@ -152,7 +156,7 @@ const getFilmesBemAvaliados = async (req, res) => {
           poster_path: dado.poster_path,
           vote_average: dado.vote_average,
           title: dado.title,
-          release_date: `${date} de ${month} de ${year}`,          
+          release_date: `${day} de ${month} de ${year}`,          
         };
       });
 
@@ -189,7 +193,34 @@ const getSeriesPopulares = async (req, res) => {
   await api
     .get(`/tv/popular`)
     .then((response) => {
-      return res.status(200).json(response.data);
+      let dados = response.data.results;
+
+      let retornoEsperado = dados.map((dado) => {
+        let data = dado.first_air_date;
+        let dia = data.split('-')[2];        
+
+        data = new Date(data);
+        var day = dia;
+        var month = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"][data.getMonth()];
+        var year = data.getFullYear();
+
+        return {
+          id: dado.id,
+          poster_path: dado.poster_path,
+          vote_average: dado.vote_average,
+          name: dado.name,
+          first_air_date: `${day} de ${month} de ${year}`,          
+        };
+      });
+
+      return res.status(200).json(
+        { 
+          page: response.data.page,
+          results: retornoEsperado,
+          total_pages: response.data.total_pages,
+          total_results: response.data.total_results
+        }
+      );
     })
     .catch(() => {
       return res
@@ -198,11 +229,39 @@ const getSeriesPopulares = async (req, res) => {
     });
 };
 
+
 const getSeriesExibicao = async (req, res) => {
   await api
     .get(`/tv/airing_today`)
     .then((response) => {
-      return res.status(200).json(response.data);
+      let dados = response.data.results;
+
+      let retornoEsperado = dados.map((dado) => {
+        let data = dado.first_air_date;
+        let dia = data.split('-')[2];        
+
+        data = new Date(data);
+        var day = dia;
+        var month = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"][data.getMonth()];
+        var year = data.getFullYear();
+
+        return {
+          id: dado.id,
+          poster_path: dado.poster_path,
+          vote_average: dado.vote_average,
+          name: dado.name,
+          first_air_date: `${day} de ${month} de ${year}`,          
+        };
+      });
+
+      return res.status(200).json(
+        { 
+          page: response.data.page,
+          results: retornoEsperado,
+          total_pages: response.data.total_pages,
+          total_results: response.data.total_results 
+        }
+      );
     })
     .catch(() => {
       return res
@@ -215,7 +274,34 @@ const getSeriesNoAr = async (req, res) => {
   await api
     .get(`/tv/on_the_air`)
     .then((response) => {
-      return res.status(200).json(response.data);
+      let dados = response.data.results;
+
+      let retornoEsperado = dados.map((dado) => {
+        let data = dado.first_air_date;
+        let dia = data.split('-')[2];        
+
+        data = new Date(data);
+        var day = dia;
+        var month = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"][data.getMonth()];
+        var year = data.getFullYear();
+
+        return {
+          id: dado.id,
+          poster_path: dado.poster_path,
+          vote_average: dado.vote_average,
+          name: dado.name,
+          first_air_date: `${day} de ${month} de ${year}`,          
+        };
+      });
+
+      return res.status(200).json(
+        { 
+          page: response.data.page,
+          results: retornoEsperado,
+          total_pages: response.data.total_pages,
+          total_results: response.data.total_results 
+        }
+      );
     })
     .catch(() => {
       return res
@@ -228,7 +314,34 @@ const getSeriesTop_rated = async (req, res) => {
   await api
     .get(`/tv/top_rated`)
     .then((response) => {
-      return res.status(200).json(response.data);
+      let dados = response.data.results;
+
+      let retornoEsperado = dados.map((dado) => {
+        let data = dado.first_air_date;
+        let dia = data.split('-')[2];        
+
+        data = new Date(data);
+        var day = dia;
+        var month = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"][data.getMonth()];
+        var year = data.getFullYear();
+
+        return {
+          id: dado.id,
+          poster_path: dado.poster_path,
+          vote_average: dado.vote_average,
+          name: dado.name,
+          first_air_date: `${day} de ${month} de ${year}`,          
+        };
+      });
+
+      return res.status(200).json(
+        { 
+          page: response.data.page,
+          results: retornoEsperado,
+          total_pages: response.data.total_pages,
+          total_results: response.data.total_results 
+        }
+      );
     })
     .catch(() => {
       return res
