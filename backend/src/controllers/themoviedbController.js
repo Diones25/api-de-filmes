@@ -238,10 +238,10 @@ const getSeriesTop_rated = async (req, res) => {
 };
 
 const getSeriesPopularesId = async (req, res) => {
-  const tv_id = req.params.tv_id;
+  const id = req.params.id;
 
   await api
-    .get(`/tv/${tv_id}`)
+    .get(`/tv/${id}`)
     .then((response) => {
       return res.status(200).json(response.data);
     })

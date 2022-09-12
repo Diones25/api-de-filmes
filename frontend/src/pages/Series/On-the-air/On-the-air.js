@@ -60,7 +60,7 @@ const On_the_air = () => {
             <Row>
               {on_the_air.map((item, index) => (
                 <Col className="col my-2 md-4 lg-3" key={index}>
-                  <Link id="Link" to={`/movie/${item.id}`}>
+                  <Link id="Link" to={`/tv/${item.id}`}>
                     <Card id="card" className="mb-4">
                       <Card.Img
                         id="cardImg"
