@@ -84,9 +84,7 @@ const NavBar = () => {
                 </span>
                 <ul className="dropdown-menu" aria-labelledby="pessoas">
                   <li>
-                    <a className="dropdown-item" href="#">
-                      Populares
-                    </a>
+                    <Link className="dropdown-item" to='/person/popular'>Populares</Link>
                   </li>
                 </ul>
               </li>

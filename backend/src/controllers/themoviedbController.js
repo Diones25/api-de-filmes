@@ -1,7 +1,7 @@
 import api from "../service/api.js";
 
 const getFilmesPopulares = async (req, res) => {
-  const page = req.query['page']
+  const page = req.query['page'];
   console.log(page)
   await api
     .get(`/movie/popular?page=${page}`)
@@ -42,7 +42,7 @@ const getFilmesPopulares = async (req, res) => {
 
 const getFilmesProximasEstreias = async (req, res) => {
 
-  const page = req.query['page']
+  const page = req.query['page'];
   await api
     .get(`/movie/upcoming?page=${page}`)
     .then((response) => {
@@ -229,7 +229,6 @@ const getSeriesPopulares = async (req, res) => {
     });
 };
 
-
 const getSeriesExibicao = async (req, res) => {
   await api
     .get(`/tv/airing_today`)
@@ -379,8 +378,9 @@ const getSearchSeries = async (req, res) => {
 };
 
 const getPessoasPopulares = async (req, res) => {
+  const page = req.query['page'];
   await api
-    .get(`/person/popular`)
+    .get(`/person/popular?page=${page}`)
     .then((response) => {
       return res.status(200).json(response.data);
     })
@@ -392,10 +392,10 @@ const getPessoasPopulares = async (req, res) => {
 };
 
 const getPessoasPopularesId = async (req, res) => {
-  const person_id = req.params.person_id;
+  const id = req.params.id;
 
   await api
-    .get(`/person/${person_id}`)
+    .get(`/person/${id}`)
     .then((response) => {
       return res.status(200).json(response.data);
     })

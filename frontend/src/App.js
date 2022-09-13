@@ -13,7 +13,9 @@ import SeriesPopulares from './pages/Series/SeriesPopulares/SeriesPopulares.js';
 import AiringToday from './pages/Series/Airing-today/Airing-today.js';
 import OnTheAir from './pages/Series/On-the-air/On-the-air.js';
 import SeriesTopRated from './pages/Series/Top-rated/Top-rated.js';
-import SeriesDetails from './pages/Series/SeriesDetails/SeriesDetails.js'
+import SeriesDetails from './pages/Series/SeriesDetails/SeriesDetails.js';
+import PersonPopulares from './pages/Person/PersonPopulares/PersonPopulares.js';
+import PersonDetails from './pages/Person/PersonDetails/PersonDetails.js'
 
 
 function App() {
@@ -32,6 +34,8 @@ function App() {
           <Route path='/tv/on_the_air' element={<OnTheAir />} />       
           <Route path="/tv/top_rated" element={<SeriesTopRated />} />   
           <Route path="/tv/:id" element={<SeriesDetails />} />    
+          <Route path="/person/popular" element={<PersonPopulares />} /> 
+          <Route path="/person/:id" element={<PersonDetails />} />    
         </Routes>
       </Router>
       <Footer />

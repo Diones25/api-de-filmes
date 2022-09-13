@@ -14,8 +14,8 @@ router.get('/tv/on_the_air', themoviedbController.getSeriesNoAr);
 router.get('/tv/top_rated', themoviedbController.getSeriesTop_rated);
 router.get('/tv/:id', themoviedbController.getSeriesPopularesId);
 router.get('/search/series', themoviedbController.getSearchSeries);
-router.get('/pessoas/populares', themoviedbController.getPessoasPopulares);
-router.get('/pessoas/populares/:person_id', themoviedbController.getPessoasPopularesId);
+router.get('/person/popular', themoviedbController.getPessoasPopulares);
+router.get('/person/:id', themoviedbController.getPessoasPopularesId);
 router.get('/search/pessoas', themoviedbController.getSearchPessoas);
 
 export default router;

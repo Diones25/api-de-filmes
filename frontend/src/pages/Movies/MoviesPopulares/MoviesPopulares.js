@@ -35,7 +35,6 @@ const MoviesPopulares = () => {
   }, []);
 
   return (
-    //title, release_date, vote_average, poster_path
     <>
       <Banner />
       <div className="bgContainer" style={{ background: "#F5F5F5" }}>
