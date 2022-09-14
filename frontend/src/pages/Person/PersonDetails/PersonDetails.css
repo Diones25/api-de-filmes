@@ -25,6 +25,9 @@ body::-webkit-scrollbar-thumb {
     background-color: rgba(var(--scrollerGrey),  1);
     border-radius: 20px;
 }
+a {
+    text-decoration: none;
+}
 ul li{
     list-style: none;
 }
