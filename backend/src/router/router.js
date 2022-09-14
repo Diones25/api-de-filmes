@@ -16,6 +16,7 @@ router.get('/tv/:id', themoviedbController.getSeriesPopularesId);
 router.get('/search/series', themoviedbController.getSearchSeries);
 router.get('/person/popular', themoviedbController.getPessoasPopulares);
 router.get('/person/:id', themoviedbController.getPessoasPopularesId);
+router.get('/person/:id/tagged_images', themoviedbController.getPessoasImages)
 router.get('/search/pessoas', themoviedbController.getSearchPessoas);
 
 export default router;

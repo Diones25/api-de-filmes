@@ -406,6 +406,31 @@ const getPessoasPopularesId = async (req, res) => {
     });
 };
 
+const getPessoasImages = async (req, res) => {
+  const id = req.params.id;
+
+  await api
+    .get(`/person/${id}/tagged_images`)
+    .then((response) => {
+      const dados = response.data.results;
+      let retornoEsperado = dados.map((dado) => {
+        return {
+          id: dado.id, 
+          title: dado.media.title,  
+          movieId: dado.media.id,
+          poster_path: dado.media.poster_path        
+        };
+      });
+
+      return res.status(200).json(retornoEsperado);
+    })
+    .catch(() => {
+      return res
+        .status(400)
+        .json({ message: "Imagens de pessoas populares não encontrado!" });
+    });
+};
+
 const getSearchPessoas = async (req, res) => {
   const query = req.query["query"];
 
@@ -434,5 +459,6 @@ export default {
   getSearchSeries,
   getPessoasPopulares,
   getPessoasPopularesId,
+  getPessoasImages,
   getSearchPessoas,
 };
