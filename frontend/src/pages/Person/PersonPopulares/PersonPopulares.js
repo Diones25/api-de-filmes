@@ -62,7 +62,7 @@ const Person = () => {
                 {person.map((item, index) => (
                     <Col className="col my-2 md-4 lg-3" key={index}>
                     <Link id="Link" to={`/person/${item.id}`}>
-                        <Card id="card" className="mb-4">
+                        <Card id="cardPerson" className="mb-4">
                         <Card.Img
                             id="cardImg"
                             variant="top"
@@ -71,7 +71,7 @@ const Person = () => {
                             }`}
                         />
                         <Card.Body id="cardBody">                        
-                            <Card.Title className="title">{item.name}</Card.Title>
+                            <Card.Title className="title text-center">{item.name}</Card.Title>
                         </Card.Body>
                         </Card>
                     </Link>
