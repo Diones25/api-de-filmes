@@ -64,7 +64,7 @@ const Person = () => {
                     <Link id="Link" to={`/person/${item.id}`}>
                         <Card id="cardPerson" className="mb-4">
                         <Card.Img
-                            id="cardImg"
+                            id="cardImgPerson"
                             variant="top"
                             src={`${`https://www.themoviedb.org/t/p/w220_and_h330_face/`}.${
                             item.profile_path
