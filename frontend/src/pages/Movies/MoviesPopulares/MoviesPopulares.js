@@ -22,7 +22,7 @@ const MoviesPopulares = () => {
   const [moviePopulares, setMoviePopulares] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const [total, setTotal] = useState(0);
+  const [total, setTotal] = useState(0); 
   const [limit, setLimit] = useState(5);
   const [pages, setPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
