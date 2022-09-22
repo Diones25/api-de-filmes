@@ -38,7 +38,7 @@ const MoviesPopulares = () => {
         const totalPages = Math.ceil(total / limit);
 
         const arrayPages = [];
-        for (let i = 1; i <= totalPages; i++) {
+        for (let i = 1; i <= totalPages; i++) { 
           arrayPages.push(i);
         }
 
