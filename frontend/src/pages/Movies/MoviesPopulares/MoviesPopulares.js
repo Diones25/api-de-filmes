@@ -18,7 +18,7 @@ const override = css`
   border-color: red;
 `;
 
-const MoviesPopulares = () => {
+const MoviesPopulares = () => { 
   const [moviePopulares, setMoviePopulares] = useState([]);
   const [loading, setLoading] = useState(true);
 
