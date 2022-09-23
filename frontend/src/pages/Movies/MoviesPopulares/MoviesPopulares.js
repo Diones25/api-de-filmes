@@ -6,7 +6,7 @@ import api from "../../../service/api.js";
 import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Banner from '../../../components/Banner/Banner.js';
-import ScaleLoader from 'react-spinners/ScaleLoader'
+import ScaleLoader from 'react-spinners/ScaleLoader';
 import "../Movie.css";
 
 import InputSearch from "../../../components/InputSearch/InputSearch.js";
@@ -22,17 +22,41 @@ const MoviesPopulares = () => {
   const [moviePopulares, setMoviePopulares] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const [total, setTotal] = useState(0);
+  const [limit, setLimit] = useState(5);
+  const [pages, setPages] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+
   useEffect(() => {
+
     api
-      .get("/movie/popular")
+      .get(`/movie/popular?page=${currentPage}`)
       .then((response) => {
-        setMoviePopulares(response.data.results);
+        
+        setMoviePopulares(response.data.results.retornoEsperado);
+        setTotal(response.data.results.total_pages);
+        const totalPages = Math.ceil(total / limit);
+
+        const arrayPages = [];
+        for (let i = 1; i <= totalPages; i++) {
+          arrayPages.push(i);
+        }
+
+        setPages(arrayPages);
+
+        console.log("Total de páginas: ", response.data.results.total_pages)
+        console.log("Total de resultados: ", response.data.results.total_results)
+        console.log("Página atual: ", response.data.results.page)
+
+        console.log("TOTAL",total)
+        console.log("currenPage ==> ", currentPage)
+
         setLoading(false);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [currentPage, total]);
 
   return (
     <>
@@ -94,6 +118,29 @@ const MoviesPopulares = () => {
             </Row>
           }
 
+          <div>
+            <div>
+              {currentPage > 1 && (
+                <div onClick={() => setCurrentPage(currentPage - 1)}>
+                  Previous
+                </div>
+              )}
+              {pages.map((page) => (
+                <div
+                  isSelect={page === currentPage}
+                  key={page}
+                  onClick={() => setCurrentPage(page)}
+                >
+                  {page}
+                </div>
+              ))}
+              {currentPage < pages.length && (
+                <div onClick={() => setCurrentPage(currentPage + 1)}>
+                  Next
+                </div>
+              )}
+            </div>
+          </div>
         </Container>
       </div>
     </>

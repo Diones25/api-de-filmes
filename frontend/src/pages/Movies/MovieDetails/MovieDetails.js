@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useSearchParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Container, Row, Col, Card } from "react-bootstrap";
 import api from '../../../service/api.js';
 
@@ -13,6 +13,8 @@ const MovieDetails = () => {
     api
       .get(`/movie/${id}`)
       .then((response) => {
+
+        console.log(id)
 
         let data = response.data.release_date;
 
@@ -72,7 +74,7 @@ const MovieDetails = () => {
                     <Card.Img
                       className="PosterImage"
                       variant="top"
-                      src={ `https://www.themoviedb.org/t/p/w220_and_h330_face/.${movieDetails.poster_path }` }
+                      src={ `https://www.themoviedb.org/t/p/w220_and_h330_face/${movieDetails.poster_path }` }
                     />
                   </div>
                   <Card.Body className="cardBody">

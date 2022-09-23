@@ -6,7 +6,7 @@ const getFilmesPopulares = async (req, res) => {
   await api
     .get(`/movie/popular?page=${page}`)
     .then((response) => {
-      let dados = response.data.results;
+      let dados = response.data.results.slice(0, 18);
 
       let retornoEsperado = dados.map((dado) => {
         let data = dado.release_date;
@@ -28,10 +28,12 @@ const getFilmesPopulares = async (req, res) => {
 
       return res.status(200).json(
         { 
-          page: response.data.page,
-          results: retornoEsperado,
-          total_pages: response.data.total_pages,
-          total_results: response.data.total_results
+          results: {
+            page: response.data.page,
+            total_pages: response.data.total_pages,
+            total_results: response.data.total_results,
+            retornoEsperado
+          }
         }
       );
     })
@@ -46,7 +48,7 @@ const getFilmesProximasEstreias = async (req, res) => {
   await api
     .get(`/movie/upcoming?page=${page}`)
     .then((response) => {
-      let dados = response.data.results;
+      let dados = response.data.results.slice(0, 18);
 
       let retornoEsperado = dados.map((dado) => {
         let data = dado.release_date;
@@ -99,7 +101,7 @@ const getFilmesEmCartaz = async (req, res) => {
   await api
     .get(`/movie/now_playing?page=${page}`)
     .then((response) => {
-      let dados = response.data.results;
+      let dados = response.data.results.slice(0, 18);
 
       let retornoEsperado = dados.map((dado) => {
         let data = dado.release_date;
@@ -140,7 +142,7 @@ const getFilmesBemAvaliados = async (req, res) => {
   await api
     .get(`/movie/top_rated?page=${page}`)
     .then((response) => {
-      let dados = response.data.results;
+      let dados = response.data.results.slice(0, 18);
 
       let retornoEsperado = dados.map((dado) => {
         let data = dado.release_date;
@@ -193,7 +195,7 @@ const getSeriesPopulares = async (req, res) => {
   await api
     .get(`/tv/popular`)
     .then((response) => {
-      let dados = response.data.results;
+      let dados = response.data.results.slice(0, 18);
 
       let retornoEsperado = dados.map((dado) => {
         let data = dado.first_air_date;
@@ -233,7 +235,7 @@ const getSeriesExibicao = async (req, res) => {
   await api
     .get(`/tv/airing_today`)
     .then((response) => {
-      let dados = response.data.results;
+      let dados = response.data.results.slice(0, 18);
 
       let retornoEsperado = dados.map((dado) => {
         let data = dado.first_air_date;
@@ -273,7 +275,7 @@ const getSeriesNoAr = async (req, res) => {
   await api
     .get(`/tv/on_the_air`)
     .then((response) => {
-      let dados = response.data.results;
+      let dados = response.data.results.slice(0, 18);
 
       let retornoEsperado = dados.map((dado) => {
         let data = dado.first_air_date;
@@ -313,7 +315,7 @@ const getSeriesTop_rated = async (req, res) => {
   await api
     .get(`/tv/top_rated`)
     .then((response) => {
-      let dados = response.data.results;
+      let dados = response.data.results.slice(0, 18);
 
       let retornoEsperado = dados.map((dado) => {
         let data = dado.first_air_date;
@@ -382,6 +384,7 @@ const getPessoasPopulares = async (req, res) => {
   await api
     .get(`/person/popular?page=${page}`)
     .then((response) => {
+      //formatar essa saída também
       return res.status(200).json(response.data);
     })
     .catch(() => {
@@ -460,5 +463,5 @@ export default {
   getPessoasPopulares,
   getPessoasPopularesId,
   getPessoasImages,
-  getSearchPessoas,
+  getSearchPessoas
 };
