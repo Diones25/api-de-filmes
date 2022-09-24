@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import api from "../../../service/api.js";
@@ -7,6 +7,7 @@ import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import Banner from '../../../components/Banner/Banner.js';
 import ScaleLoader from 'react-spinners/ScaleLoader';
+import Pagination from '../../../components/Pagination/Pagination.js';
 import "../Movie.css";
 
 import InputSearch from "../../../components/InputSearch/InputSearch.js";
@@ -17,6 +18,8 @@ const override = css`
   margin: 0 auto;
   border-color: red;
 `;
+
+let PageSize = 10;
 
 const MoviesPopulares = () => { 
   const [moviePopulares, setMoviePopulares] = useState([]);
@@ -57,6 +60,14 @@ const MoviesPopulares = () => {
         console.log(err);
       });
   }, [currentPage, total]);
+
+  let data = pages;
+
+  const currentTableData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return data.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage]);
 
   return (
     <>
@@ -118,28 +129,14 @@ const MoviesPopulares = () => {
             </Row>
           }
 
-          <div>
-            <div>
-              {currentPage > 1 && (
-                <div onClick={() => setCurrentPage(currentPage - 1)}>
-                  Previous
-                </div>
-              )}
-              {pages.map((page) => (
-                <div
-                  isSelect={page === currentPage}
-                  key={page}
-                  onClick={() => setCurrentPage(page)}
-                >
-                  {page}
-                </div>
-              ))}
-              {currentPage < pages.length && (
-                <div onClick={() => setCurrentPage(currentPage + 1)}>
-                  Next
-                </div>
-              )}
-            </div>
+          <div className="d-flex justify-content-center pb-4">
+            <Pagination
+              className="pagination-bar"
+              currentPage={currentPage}
+              totalCount={data.length}
+              pageSize={PageSize}
+              onPageChange={page => setCurrentPage(page)}
+            />
           </div>
         </Container>
       </div>
